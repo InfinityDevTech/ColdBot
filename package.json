@@ -1,0 +1,25 @@
+{
+  "name": "coldrp",
+  "version": "1.0.0",
+  "engines": {
+    "node": "15.14", 
+    "npm": "7.7.6"
+   },
+  "description": "A bot for COLDRP FiveM!",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "InfinityDev",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.10.5",
+    "discord-fivem-api": "^1.0.4",
+    "discord.js": "^12.5.3",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.9.0",
+    "fs": "*",
+    "parse": "^3.2.0",
+    "randomstring": "^1.2.1"  
+  }
+}
