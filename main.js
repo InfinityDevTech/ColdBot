@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
-const config = require("./config.json");
-const dotenv = require("dotenv");
+require('dotenv').config()
 const fs = require('fs');
 const firebase = require('firebase/app');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
@@ -35,4 +34,4 @@ console.log(`Bot added to server ${gData.name}`)
 })
  
 
-client.login(process.env.TOKEN);
+client.login();
