@@ -41,7 +41,6 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
         }).then(() => {
 
            if(ticketDone.length === 0) ticketDone = "No status set!"
-
             if(guildID === message.guild.id) {
             const embed = new Discord.MessageEmbed()
             .setColor("BLUE")

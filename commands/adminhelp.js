@@ -24,6 +24,8 @@ module.exports = {
                 { name: 'Kick', value: `kicks users, cant kick administrators: ${prefix}kick <USER>` },
                 { name: 'Ban', value: `Bans users, cant ban administrators: ${prefix}ban <USER>` },
                 { name: 'ticketcontrols', value: `This command shows controls to a ticket, but be careful the controls can also delete a channel: ${prefix}ticketcontrols` },
+                { name: 'ticketstatus', value: `This command shows a ticket's stauts using the ID, you can find this in the tickets embed footer: ${prefix}ticketstatus <TICKET ID>` },
+                { name: 'ticketstatus', value: `This command allows you to set a category that tickets get created in: ${prefix}ticketconfig <TICKET ID>` },
                 { name: 'Ban', value: `Shows a ban in the database: ${prefix}dbb <ID>` },
                 { name: 'Ban', value: `Shows a kick in the database: ${prefix}dbk <ID>` },
               )

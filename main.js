@@ -1,12 +1,11 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
+const dotenv = require("dotenv");
 const fs = require('fs');
-const fivem = require("discord-fivem-api");
 const firebase = require('firebase/app');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
 const admin = require('firebase-admin');
 const serviceAccount = require('./firebase-login.json')
-const server = new fivem.DiscordFivemApi("185.249.196.248:30424");
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -36,4 +35,4 @@ console.log(`Bot added to server ${gData.name}`)
 })
  
 
-client.login(config.token);
+client.login(process.env.TOKEN);
