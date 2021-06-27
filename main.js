@@ -24,7 +24,7 @@ client.on('guildCreate', async gData => {
         'guildID': gData.id,
         'guildName': gData.name,
         'guildOwnerID': gData.ownerID,
-        'prefix': '!',
+        'prefix': ';',
         'spamFilter' : 'true',
         'ticketParent' : ''
     })

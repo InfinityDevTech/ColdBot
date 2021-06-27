@@ -1,4 +1,4 @@
 module.exports = (client) =>{
    console.log(`[STATUS] : Bot is online`);
-   client.user.setActivity('!help')
+   client.user.setActivity(';help')
 }

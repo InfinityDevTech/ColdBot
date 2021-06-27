@@ -59,7 +59,7 @@ console.log(message.guild.id)
                             { name: '\u200b', value: `Kicked User ID: ${kickedUserID}` },
                             { name: '\u200b', value: `Kick Date: ${kickDate}` },
                             { name: '\u200b', value: `Kick Time: ${kickTime}` },
-                            { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | Patreon Coming Soon!'},
+                            { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | [Bot discord!](https://discord.gg/k4fb9TZfcK)'},
                         )
                     message.author.send(embed)
                         .then(msg => {
