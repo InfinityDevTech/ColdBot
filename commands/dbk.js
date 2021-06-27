@@ -43,8 +43,11 @@ if (!args[0]) {
                     kickTime = q.data().KickTime;
                 }
 
+console.log(kickGuildID)
+console.log(message.guild.id)
+
             }).then(() => {
-                if (kickGuildID === message.kickGuildID) {
+                if (kickGuildID === message.guild.id) {
                     const embed = new Discord.MessageEmbed()
                         .setColor("BLUE")
                         .setTitle(`Kick Info: `)
@@ -56,9 +59,8 @@ if (!args[0]) {
                             { name: '\u200b', value: `Kicked User ID: ${kickedUserID}` },
                             { name: '\u200b', value: `Kick Date: ${kickDate}` },
                             { name: '\u200b', value: `Kick Time: ${kickTime}` },
-
+                            { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | Patreon Coming Soon!'},
                         )
-                        .setFooter(message.author.tag)
                     message.author.send(embed)
                         .then(msg => {
                             setTimeout(() => msg.delete(), 60000)

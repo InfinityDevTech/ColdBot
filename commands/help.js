@@ -16,17 +16,14 @@ module.exports = {
 
             const embed = new Discord.MessageEmbed()
               .setColor("BLUE")
+              .setTitle("Commands: ")
               .setAuthor("Help!")
-              .setTitle(`Commands: `)
               .addFields(
-                { name: 'Players Online', value: `This command checks out the players on the server: ${prefix}players` },
-                { name: 'Servers', value: `This command shows you our other servers: ${prefix}servers` },
-                { name: 'Ticket', value: `This command creates a ticket: ${prefix}ticket` },
-                { name: 'coldbotprefix', value: 'This command shows the current server prefix: `coldbotprefix`' },
-                { name: 'Admin-Help', value: `This command shows our admins the help page: ${prefix}adminhelp` },
+                { name: '📰 - General Commands', value: "`<NO PREFIX> - coldbotprefix`, `vote - shows the vote page`, `paypal - shows my paypal to support me!`"},
+                { name: '👔 - Administrative Help', value: "This command shows admins the help page: `adminhelp`"},
+                { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | Patreon Coming Soon!'},
                 
               )
-              .setFooter(message.author.tag)
             message.author.send(embed)
             .then(msg => {
                 setTimeout(() => msg.delete(), 60000)

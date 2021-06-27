@@ -58,9 +58,8 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
               { name: '\u200b', value: `Banned User ID: ${BannedUserID}` },
               { name: '\u200b', value: `Ban Date: ${BanDate}` },
               { name: '\u200b', value: `Ban Time: ${BanTime}` },
-              
+              { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | Patreon Coming Soon!'}, 
             )
-            .setFooter(message.author.tag)
           message.author.send(embed)
           .then(msg => {
               setTimeout(() => msg.delete(), 60000)

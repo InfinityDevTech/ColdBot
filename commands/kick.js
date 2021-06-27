@@ -34,7 +34,6 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(member.id);
                 if (!memberTarget.hasPermission('ADMINISTRATOR')) {
                     memberTarget.kick();
-                    console.log(`${message.author.tag} kicked the user ${member.tag}`);
 
                     db.collection('kicks').doc(kickid).set({
                         'kickGuildID' : message.guild.id,

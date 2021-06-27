@@ -25,11 +25,11 @@ module.exports = {
                 { name: 'Ban', value: `Bans users, cant ban administrators: ${prefix}ban <USER>` },
                 { name: 'ticketcontrols', value: `This command shows controls to a ticket, but be careful the controls can also delete a channel: ${prefix}ticketcontrols` },
                 { name: 'ticketstatus', value: `This command shows a ticket's stauts using the ID, you can find this in the tickets embed footer: ${prefix}ticketstatus <TICKET ID>` },
-                { name: 'ticketstatus', value: `This command allows you to set a category that tickets get created in: ${prefix}ticketconfig <TICKET ID>` },
-                { name: 'Ban', value: `Shows a ban in the database: ${prefix}dbb <ID>` },
-                { name: 'Ban', value: `Shows a kick in the database: ${prefix}dbk <ID>` },
+                { name: 'ticketconfig', value: `This command allows you to set a category that tickets get created in: ${prefix}ticketconfig <TICKET ID>` },
+                { name: 'BanDB', value: `Shows a ban in the database: ${prefix}dbb <ID>` },
+                { name: 'kickDB', value: `Shows a kick in the database: ${prefix}dbk <ID>` },
+                { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | Patreon Coming Soon!'},
               )
-              .setFooter(message.author.tag)
             message.author.send(embed)
             .then(msg => {
                 setTimeout(() => msg.delete(), 60000)
