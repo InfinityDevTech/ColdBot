@@ -19,7 +19,7 @@ var tagnumbers = str.split('#')[1];
         .setTitle(`Ticket Categories`)
         .addFields(
           { name: ':red_square:', value: 'For Ban-Appeals, Mute-Appeals' },
-          { name: ':orange_square:', value: 'For General-Reports, Discord-Reports, Hacking-Reports' },
+          { name: ':orange_square:', value: 'For General-Reports' },
           { name: ':green_square:', value: 'For General FAQ' },
           { name: ':blue_square:', value: 'For Role-Requests' },
         )
