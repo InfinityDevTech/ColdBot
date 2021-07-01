@@ -4,9 +4,6 @@ module.exports = {
     name: 'help',
     description: "Shows Help",
     execute(client, message, args, Discord, db){
-      if (message.author.id === "574445866220388352") {
-
-
 
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
@@ -25,4 +22,3 @@ module.exports = {
               message.delete();
               }
     }
-}
