@@ -5,7 +5,7 @@ let dayjs = require('dayjs');
 module.exports = {
     name: 'kick',
     description: "Kicks A User!",
-    execute(client, message, args, Discord, db) {
+    async execute(client, message, args, Discord, db) {
 
         if (!message.guild) return;
 
@@ -31,7 +31,10 @@ module.exports = {
             let kickid = randomstring.generate(10);
 
             if (member) {
-                const memberTarget = message.guild.members.cache.get(member.id);
+                const userId = message.mentions.users.first().id
+                const member2 = await message.guild.members.fetch({user: userId})
+
+                const memberTarget = member2;
                 if (!memberTarget.hasPermission('ADMINISTRATOR')) {
                     memberTarget.kick();
 
@@ -54,7 +57,7 @@ module.exports = {
                   message.author.send(embed);
                 } else {
                     const embed = new Discord.MessageEmbed()
-                    .setColor("RED")
+                    .setColor("WHITE")
                     .setTitle(`Error : That user is an admin!`)
                     .setDescription(`Admins have to be kicked manually, or they have to be removed of their roles then kicked`)
                     .setFooter(message.author.tag)
@@ -65,7 +68,7 @@ module.exports = {
                 }
             } else {
                 const embed = new Discord.MessageEmbed()
-                    .setColor("RED")
+                .setColor("WHITE")
                     .setTitle(`Errror : member not found`)
                     .setDescription(`That user was not found! Are you sending the command right?`)
                     .setFooter(message.author.tag)
@@ -76,7 +79,7 @@ module.exports = {
             }
         } else {
             const embed = new Discord.MessageEmbed()
-                    .setColor("RED")
+            .setColor("WHITE")
                     .setTitle(`No Perms!`)
                     .setDescription(`No permission! If you continue the administration team will ban you!`)
                     .setFooter(message.author.tag)

@@ -10,7 +10,7 @@ message.delete();
         const channel =  message.channel.id;
 
         const ticketintro = new Discord.MessageEmbed()
-        .setColor("BLUE")
+        .setColor("WHITE")
         .setTitle(`Ticket Controls`)
         .addFields(
           { name: '❌', value: 'Sets the ticket as incomplete' },

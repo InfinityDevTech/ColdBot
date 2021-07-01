@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: 'patadd',
     description: "Adds a patron user",
-    execute(client, message, args, Discord, db) {
+    async execute(client, message, args, Discord, db) {
         if (!message.guild) return;
         if (message.author.id === "574445866220388352") {
 
@@ -15,7 +15,11 @@ module.exports = {
 
                 if (!rank) rank = "1";
 
-                client.users.cache.get(member).send(`Hello! Your patron powers have been activated with the tier of ${rank}, use !pathelp (Not in DM's of course :) ) to learn your commands!`)
+                const userId = message.mentions.users.first().id
+                const member2 = await message.guild.members.fetch({user: userId})
+                const dmChannel = await member2.createDM()
+
+                        dmChannel.send(`Hello! Your patron powers have been activated with the tier of ${rank}, use ;pathelp (Not in DM's of course :) ) to learn your commands!`)
 
                 let dateobj = new Date();
 

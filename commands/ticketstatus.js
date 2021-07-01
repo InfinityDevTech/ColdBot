@@ -59,7 +59,7 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
             message.delete();
         } else {
             const embed = new Discord.MessageEmbed()
-                        .setColor("RED")
+            .setColor("WHITE")
                         .setTitle(`Not your server!`)
                         .setDescription(`Not your server! Please do not try and view tickets not from your server!`)
                         .setFooter(message.author.tag)
@@ -68,7 +68,7 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
         })
         } else {
             const embed = new Discord.MessageEmbed()
-            .setColor("RED")
+            .setColor("WHITE")
             .setTitle(`No Perms!`)
             .setDescription(`No permission!`)
             .setFooter(message.author.tag)

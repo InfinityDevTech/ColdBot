@@ -4,18 +4,12 @@ module.exports = {
     name: 'help',
     description: "Shows Help",
     execute(client, message, args, Discord, db){
-        if (!message.guild) return;
-        
-        let prefix;
+      if (message.author.id === "574445866220388352") {
 
-        db.collection('guilds').doc(message.guild.id).get().then((q) => {
-          if (q.exists) {
-              prefix = q.data().prefix;
-          }}).then(() => {
 
 
             const embed = new Discord.MessageEmbed()
-              .setColor("BLUE")
+            .setColor("WHITE")
               .setTitle("Commands: ")
               .setAuthor("Help!")
               .addFields(
@@ -29,6 +23,6 @@ module.exports = {
                 setTimeout(() => msg.delete(), 60000)
               })
               message.delete();
-            })
+              }
     }
 }

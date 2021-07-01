@@ -11,17 +11,81 @@ module.exports = {
         let channelID = args[0];
         let categorychannel = message.guild.channels.cache.get(channelID);
 
+        test = args[0]
+
         if (message.member.hasPermission('ADMINISTRATOR')) {
-            if (!args[0]) return message.channel.send("No arguements specified!")
-            if (!args[0].isNaN) return message.channel.send("That is not a number!")
-            if (!categorychannel.type === 'category') return message.channel.send("That is not a category!\n Please right click on the category you want and click 'copy ID' and use that as your arguement!"); 
+            if (!args[0]) {
+                const embed = new Discord.MessageEmbed()
+                    .setColor("WHITE")
+                    .setTitle("ERROR!")
+                    .addFields(
+                        { name: '\u200b', value: "No message was specified! Please write your command like this: `ticketconfig <ID OF CATEGORY>`" },
 
-            let ticketchannel;
+                    )
+                message.author.send(embed)
+                    .then(msg => {
+                        setTimeout(() => msg.delete(), 15000)
+                    })
+                message.delete();
 
-            db.collection('guilds').doc(message.guild.id).update({
-                'ticketParent': channelID
-            })
+            } else {
 
+                if (isNaN(test)) {
+
+                    const embed = new Discord.MessageEmbed()
+                        .setColor("WHITE")
+                        .setTitle("ERROR!")
+                        .addFields(
+                            { name: '\u200b', value: "That is not a number! Please write your command like this: `ticketconfig <ID OF CATEGORY>`" },
+
+                        )
+                    message.author.send(embed)
+                        .then(msg => {
+                            setTimeout(() => msg.delete(), 15000)
+                        })
+                    message.delete();
+
+                } else {
+                    if (!categorychannel.type === 'category') {
+                        const embed = new Discord.MessageEmbed()
+                            .setColor("WHITE")
+                            .setTitle("ERROR!")
+                            .addFields(
+                                { name: '\u200b', value: "That is not a category! Please write your command like this: `ticketconfig <ID OF CATEGORY>`" },
+
+                            )
+                        message.author.send(embed)
+                            .then(msg => {
+                                setTimeout(() => msg.delete(), 15000)
+                            })
+                        message.delete();
+
+                    } else {
+
+                        if (message.guild.channels.exists(args[0])) return message.channel.send("WORKS")
+
+                        let ticketchannel;
+                        
+
+                        db.collection('guilds').doc(message.guild.id).update({
+                            'ticketParent': channelID
+                        })
+                        
+                        const embed = new Discord.MessageEmbed()
+                            .setColor("WHITE")
+                            .setTitle("Category is now set to:")
+                            .addFields(
+                                { name: '\u200b', value: `Ticket category is now set to\`${args[0]}\`!` }
+                            )
+                        message.author.send(embed)
+                            .then(msg => {
+                                setTimeout(() => msg.delete(), 15000)
+                            })
+                        message.delete();
+                        
+                    }
+                }
+            }
         }
     }
 }

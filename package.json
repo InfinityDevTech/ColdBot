@@ -21,7 +21,10 @@
     "firebase": "^8.6.8",
     "firebase-admin": "^9.9.0",
     "fs": "*",
-    "parse": "^3.2.0",
+    "googleapis": "^79.0.0",
+    "os-utils": "^0.0.14",
+    "parse": "^1.11.1",
+    "perspective-api-client": "^1.1.0",
     "randomstring": "^1.2.1"
   }
 }

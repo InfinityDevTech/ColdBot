@@ -15,11 +15,11 @@ module.exports = {
         }).then(() => {
 
            if (rank === '1') {
-
+            message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
            } else if (rank === '2') {
-
+            message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
            } else if (rank === '3') {
-               
+               message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
            }
 
         })

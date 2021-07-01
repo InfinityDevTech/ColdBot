@@ -9,7 +9,7 @@ module.exports = {
 
             if (args.length === 0) {
                 const embed = new Discord.MessageEmbed()
-                    .setColor("RED")
+                    .setColor("WHITE")
                     .setTitle('No Prefix Specified')
                     .setDescription(`You did not put in a prefix!`)
                 message.channel.send(embed)
@@ -35,7 +35,7 @@ module.exports = {
                 })
             } else if (args.length > 1) {
                 const embed = new Discord.MessageEmbed()
-                    .setColor("RED")
+                .setColor("WHITE")
                     .setTitle('Prefix Error')
                     .setDescription(`Prefix cannot be longer than 1 character!`)
                 message.channel.send(embed)
@@ -46,7 +46,7 @@ module.exports = {
             }
         } else {
             const embed = new Discord.MessageEmbed()
-                .setColor("RED")
+            .setColor("WHITE")
                 .setTitle('Permissions Error')
                 .setDescription(`You dont have permission!`)
             message.channel.send(embed)

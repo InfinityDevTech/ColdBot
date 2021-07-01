@@ -9,7 +9,7 @@ module.exports = {
 
         if (!args[0]) {
             const embed = new Discord.MessageEmbed()
-                      .setColor("BLUE")
+            .setColor("WHITE")
                       .setDescription("No arguements specified!")
                     message.channel.send(embed)
                     .then(msg => {
@@ -48,7 +48,7 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
 
             if(banGuildID === message.guild.id) {
             const embed = new Discord.MessageEmbed()
-            .setColor("BLUE")
+            .setColor("WHITE")
             .setTitle(`Ban Info: `)
             .addFields(
               { name: '\u200b', value: `BanID: ${BanID}` },
@@ -67,7 +67,7 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
             message.delete();
         } else {
             const embed = new Discord.MessageEmbed()
-                        .setColor("RED")
+            .setColor("WHITE")
                         .setTitle(`Not your server!`)
                         .setDescription(`Not your server! Please do not try and view bans not from your server!`)
                         .setFooter(message.author.tag)
@@ -76,7 +76,7 @@ if (message.member.hasPermission('ADMINISTRATOR')) {
         })
         } else {
             const embed = new Discord.MessageEmbed()
-            .setColor("RED")
+            .setColor("WHITE")
             .setTitle(`No Perms!`)
             .setDescription(`No permission! If you continue the administration team will ban you!`)
             .setFooter(message.author.tag)

@@ -9,7 +9,7 @@ module.exports = {
 
 if (!args[0]) {
     const embed = new Discord.MessageEmbed()
-              .setColor("BLUE")
+    .setColor("WHITE")
               .setDescription("No arguements specified!")
             message.channel.send(embed)
             .then(msg => {
@@ -49,7 +49,7 @@ console.log(message.guild.id)
             }).then(() => {
                 if (kickGuildID === message.guild.id) {
                     const embed = new Discord.MessageEmbed()
-                        .setColor("BLUE")
+                    .setColor("WHITE")
                         .setTitle(`Kick Info: `)
                         .addFields(
                             { name: '\u200b', value: `KickID: ${kickID}` },
@@ -68,7 +68,7 @@ console.log(message.guild.id)
                     message.delete();
                 } else {
                     const embed = new Discord.MessageEmbed()
-                        .setColor("RED")
+                    .setColor("WHITE")
                         .setTitle(`Not your server!`)
                         .setDescription(`Not your server! Please do not try and view kick not from your server!`)
                         .setFooter(message.author.tag)
@@ -77,7 +77,7 @@ console.log(message.guild.id)
             })
         } else {
             const embed = new Discord.MessageEmbed()
-                .setColor("RED")
+            .setColor("WHITE")
                 .setTitle(`No Perms!`)
                 .setDescription(`No permission! If you continue the administration team will ban you!`)
                 .setFooter(message.author.tag)
