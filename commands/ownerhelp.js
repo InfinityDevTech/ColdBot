@@ -4,6 +4,7 @@ module.exports = {
     name: 'ownerhelp',
     description: "Shows Help",
     execute(client, message, args, Discord, db){
+      if (message.author.id === "574445866220388352") {
 
 
             const embed = new Discord.MessageEmbed()
@@ -18,5 +19,6 @@ module.exports = {
                 setTimeout(() => msg.delete(), 60000)
               })
               message.delete();
+              }
     }
 }
