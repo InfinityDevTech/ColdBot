@@ -124,7 +124,7 @@ module.exports = {
                         .setColor("WHITE")
                         .setTitle("Commands: ")
                         .addFields(
-                            { name: '🤖 - automod commands', value: "`automod strict <NUMBER> - Changes the strictness of the automoderator`, `automod toggle - toggles the automod on and off`" },
+                            { name: '🤖 - automod commands', value: "`automod strict <NUMBER> - Changes the strictness of the automoderator`, `automod toggle - toggles the automod on and off`, `automod stats - view the automoderator settings`" },
 
                         )
                     message.author.send(embed)
