@@ -69,7 +69,7 @@ module.exports = (client, Discord, db, message, member) => {
                                let m2 = message;
                               message.delete();
                               
-                              if(!logchannel) {
+                              if(logchannel) {
 
                                 const embed2 = new Discord.MessageEmbed()
                             .setColor("WHITE")
