@@ -41,9 +41,7 @@ module.exports = {
                             throw err;
                         }
                         const collector = reactionMessage.createReactionCollector(
-                            (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id),
-                            { dispose: true }
-                        );
+                            (reaction, user) => message.guild.members.cache.find((member) => {}));
 
                         collector.on("collect", (reaction, user) => {
 
