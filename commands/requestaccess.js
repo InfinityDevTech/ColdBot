@@ -30,8 +30,6 @@ module.exports = {
                         )
                     const reactionMessage = await owner.send(embed);
 
-                    message.delete()
-
                     try {
                         await reactionMessage.react("✅");
                         await reactionMessage.react("❌");
@@ -68,6 +66,7 @@ module.exports = {
                                     client.channels.fetch('860537456020684830').then(channel => {
                                         channel.send(embed2)
                                     })
+                                    message.delete()
                             return
                                 break;
                             case "❌":
@@ -91,6 +90,7 @@ module.exports = {
                                     client.channels.fetch('860537456020684830').then(channel => {
                                         channel.send(embed3)
                                     })
+                                    message.delete()
                                 return
                                 break;
                                 return
