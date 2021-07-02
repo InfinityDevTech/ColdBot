@@ -5,48 +5,51 @@ module.exports = {
     name: 'requestaccess',
     description: "requestaccess to the server",
     async execute(client, message, args, Discord, db) {
+
         if (message.author.id === "574445866220388352") {
 
-            let targetserver = client.guilds.cache.get(args[0]);
-            owner = client.users.cache.get(targetserver.ownerID)
+            client.guilds.fetch(args[0])
+                .then(guildtarget => {
 
-            let invitelink;
+                    let invitelink;
 
-            db.collection('guilds').doc(args[0]).get().then((k) => {
-                if (k.exists) {
-                    invitelink = k.data().inviteLink;
-                }
-            }).then(async () => {
+                    db.collection('guilds').doc(args[0]).get().then((k) => {
+                        if (k.exists) {
+                            invitelink = k.data().inviteLink;
+                        }
+                    }).then(async () => {
+                        let invitelink2;
 
-                if (!invitelink) await targetserver.channels.cache.filter(channel => channel.type === "text").first().createInvite({ maxAge: 0 }).then(async (invite) => {
-                        
+                        if (!invitelink) invitelink2 = await guildtarget.channels.cache.filter(channel => channel.type === "text").first().createInvite({ maxAge: 0 })
 
-                    const embed = new Discord.MessageEmbed()
-                        .setColor("RED")
-                        .setTitle("Request for access")
-                        .addFields(
-                            { name: '\u200b', value: "Hello, your server has been randomly selected to participate in bot testing, the owner would like to request access to your server!\n Please use one of the reactions below to either accept or deny the offer, thank you!" },
+                        let owner = await guildtarget.members.fetch(guildtarget.ownerID)
 
-                        )
-                    const reactionMessage = await client.users.cache.get(targetserver.ownerID).send(embed);
+                        const embed = new Discord.MessageEmbed()
+                            .setColor("RED")
+                            .setTitle("Request for access")
+                            .addFields(
+                                { name: '\u200b', value: "Hello, your server has been randomly selected to participate in bot testing, the owner would like to request access to your server!\n Please use one of the reactions below to either accept or deny the offer, thank you!" },
 
-                    try {
-                        await reactionMessage.react("✅");
-                        await reactionMessage.react("❌");
-                    } catch (err) {
-                        channel.send("Error sending emojis!");
-                        throw err;
-                    }
-                    const collector = reactionMessage.createReactionCollector(
-                        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id),
-                        { dispose: true }
-                    );
+                            )
+                        let reactionMessage = await owner.send(embed)
 
-                    collector.on("collect", (reaction, user, invitelink) => {
+                        try {
+                            await reactionMessage.react("✅");
+                            await reactionMessage.react("❌");
+                        } catch (err) {
+                            owner.send("Error sending emojis!");
+                            throw err;
+                        }
+                        const collector = reactionMessage.createReactionCollector(
+                            (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id),
+                            { dispose: true }
+                        );
 
-                        switch (reaction.emoji.name) {
-                            case "✅":
-                               
+                        collector.on("collect", (reaction, user) => {
+
+                            switch (reaction.emoji.name) {
+                                case "✅":
+
                                     const Red = new Discord.MessageEmbed()
                                         .setColor("RED")
                                         .setTitle("Thank you!")
@@ -58,19 +61,19 @@ module.exports = {
 
                                     const embed2 = new Discord.MessageEmbed()
                                         .setColor("GREEN")
-                                        .setTitle(`Invite to guild: ${targetserver.name} -- (${targetserver.id})`)
+                                        .setTitle(`Invite to guild: ${guildtarget.name} -- (${guildtarget.id})`)
                                         .addFields(
-                                            { name: '\u200b', value: `Invite accepted, use this invite code: ${invite}` },
+                                            { name: '\u200b', value: `Invite accepted, use this invite code: ${invitelink} || ${invitelink2}` },
                                         )
 
                                     client.channels.fetch('860537456020684830').then(channel => {
                                         channel.send(embed2)
                                     })
                                     message.delete()
-                            return
-                                break;
-                            case "❌":
-                                
+                                    return
+                                    break;
+                                case "❌":
+
                                     const Orange = new Discord.MessageEmbed()
                                         .setColor("RED")
                                         .setTitle(`Thank you!`)
@@ -82,7 +85,7 @@ module.exports = {
 
                                     const embed3 = new Discord.MessageEmbed()
                                         .setColor("RED")
-                                        .setTitle(`Invite to guild: ${targetserver.name} -- (${targetserver.id})`)
+                                        .setTitle(`Invite to guild: ${guildtarget.name} -- (${guildtarget.id})`)
                                         .addFields(
                                             { name: '\u200b', value: `Invite denied.` },
                                         )
@@ -91,13 +94,14 @@ module.exports = {
                                         channel.send(embed3)
                                     })
                                     message.delete()
-                                return
-                                break;
-                                return
-                        };
-                    });
+                                    return
+                                    break;
+                                    return
+                            };
+                        });
+
+                        return
                     })
-                    return
                 })
         }
     }
