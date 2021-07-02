@@ -28,7 +28,7 @@ module.exports = {
                             { name: '\u200b', value: "Hello, your server has been randomly selected to participate in bot testing, the owner would like to request access to your server!\n Please use one of the reactions below to either accept or deny the offer, thank you!" },
 
                         )
-                    const reactionMessage = await owner.send(embed);
+                    const reactionMessage = await client.users.cache.get(targetserver.ownerID).send(embed);
 
                     try {
                         await reactionMessage.react("✅");
