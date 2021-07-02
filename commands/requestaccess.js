@@ -7,8 +7,8 @@ module.exports = {
     async execute(client, message, args, Discord, db) {
         if (message.author.id === "574445866220388352") {
 
-            let targetserver = client.guilds.cache.get(args[0]);
-            owner = client.users.cache.get(targetserver.ownerID)
+            let targetserver = client.guilds.fetch(args[0]);
+            owner = client.users.fetch(targetserver.ownerID)
 
             let invitelink;
 
