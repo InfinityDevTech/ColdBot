@@ -3,6 +3,8 @@ const oldbotprefix = require('../../commands/oldbotprefix');
 require('dotenv').config()
 const Perspective = require('perspective-api-client')
 
+
+//main module
 module.exports = (client, Discord, db, message, member) => {
     if (message.author.bot) return;
     if (!message.guild) return;
@@ -10,6 +12,7 @@ module.exports = (client, Discord, db, message, member) => {
     let BlackListCheck;
     let BlackListReason;
 
+    //gets the blacklist and checks it
     db.collection('blacklist').doc(message.author.id).get().then((k) => {
         if (k.exists) {
             BlackListCheck = k.data().blacklistID;
@@ -17,7 +20,7 @@ module.exports = (client, Discord, db, message, member) => {
         }
     }).then(async () => {
         
-
+//sends blacklist message
                 if (BlackListCheck === message.author.id) {
                     const embed = new Discord.MessageEmbed()
                         .setColor("RED")
@@ -29,6 +32,7 @@ module.exports = (client, Discord, db, message, member) => {
 
                 let prefix;
 
+                //gets guild prefix and the anti-spam
                 db.collection('guilds').doc(message.guild.id).get().then((q) => {
                     if (q.exists) {
                         prefix = q.data().prefix;
@@ -54,7 +58,7 @@ module.exports = (client, Discord, db, message, member) => {
             
                     if (Math.ceil(obj.attributeScores.TOXICITY.summaryScore.value * 100) > spamTolerance) {
                         
-            
+            //toxicity deletion
                         const embed = new Discord.MessageEmbed()
                             .setColor("WHITE")
                             .setTitle("Message Deletion: ")
@@ -70,7 +74,7 @@ module.exports = (client, Discord, db, message, member) => {
                               message.delete();
                               
                               if(logchannel) {
-
+//logging for deletion
                                 const embed2 = new Discord.MessageEmbed()
                             .setColor("WHITE")
                             .setTitle("Message Deletion: ")
@@ -84,6 +88,7 @@ module.exports = (client, Discord, db, message, member) => {
                }
                })
 
+               //calculates the command if its not toxic :)
                     const args = message.content.slice(prefix.length).split(/ +/);
                     const cmd = args.shift().toLowerCase();
 
