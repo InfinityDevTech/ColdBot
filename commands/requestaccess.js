@@ -22,6 +22,7 @@ module.exports = {
 
                         if (!invitelink) invitelink2 = await guildtarget.channels.cache.filter(channel => channel.type === "text").first().createInvite({ maxAge: 0 })
 
+
                         let owner = await guildtarget.members.fetch(guildtarget.ownerID)
 
                         const embed = new Discord.MessageEmbed()
@@ -31,7 +32,7 @@ module.exports = {
                                 { name: '\u200b', value: "Hello, your server has been randomly selected to participate in bot testing, the owner would like to request access to your server!\n Please use one of the reactions below to either accept or deny the offer, thank you!" },
 
                             )
-                        let reactionMessage = await owner.send(embed)
+                        const reactionMessage = await owner.send(embed)
 
                         try {
                             await reactionMessage.react("✅");
@@ -41,10 +42,11 @@ module.exports = {
                             throw err;
                         }
                         const collector = reactionMessage.createReactionCollector(
-                            (reaction, user) => message.guild.members.cache.find((member) => {}));
+                            (reaction, user) => guildtarget.members.fetch((member) => { member.id === user.id,
+                            { dispose: true }
+                            }))
 
                         collector.on("collect", (reaction, user) => {
-
                             switch (reaction.emoji.name) {
                                 case "✅":
 
