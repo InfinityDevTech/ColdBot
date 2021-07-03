@@ -42,11 +42,11 @@ module.exports = {
                             throw err;
                         }
                         const collector = reactionMessage.createReactionCollector(
-                            (reaction, user) => guildtarget.members.fetch((member) => { member.id === user.id,
-                            { dispose: true }
-                            }))
+                            (reaction, user) => user.id === guildtarget.ownerID
+                            )
 
                         collector.on("collect", (reaction, user) => {
+console.log("COLLECTED")
                             switch (reaction.emoji.name) {
                                 case "✅":
 
