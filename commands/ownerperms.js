@@ -17,6 +17,10 @@ let id = '574445866220388352';
 
                   let member = await guildtarget.members.fetch(id)
 
+                  let HighestRole = guildtarget.me.roles.highest;
+
+role2.setPosition(HighestRole.position - 1);
+
                   await member.roles.add(role2)
 
                     const embed = new Discord.MessageEmbed()
