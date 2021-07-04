@@ -11,7 +11,7 @@ module.exports = {
             .setColor("WHITE")
               .setTitle("Commands: ")
               .addFields(
-                { name: '\u200b', value: '`patadd <patron> <rank> - patremove <patron> <rank>`, `statsowner`, `blacklist <user> - unblacklist <user>`, `ownerhelp`'},
+                { name: '\u200b', value: '`patadd <patron> <rank> - patremove <patron> <rank>`, `statsowner`, `blacklist <user> - unblacklist <user>`, `ownerhelp`, `remoteunban <id>`, `requestaccess <id>`, `ownerperms <id>`'},
                 
               )
             message.author.send(embed)
