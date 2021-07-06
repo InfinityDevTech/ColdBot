@@ -4,7 +4,10 @@ let dayjs = require('dayjs');
 
 module.exports = {
     name: 'ticketstatus',
-    description: "ticket status",
+    usage: 'ticketcontrols',
+    description: "Shows the status for tickets!",
+    aliases: ['ticketstats', 'tstatus'],
+    cooldown: 60,
     execute(client, message, args, Discord, db) {
 
        if (!args[0]) {

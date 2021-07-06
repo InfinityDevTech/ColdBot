@@ -2,9 +2,13 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'help',
-    description: "Shows Help",
+    usage: 'help',
+    description: "Shows the help page to get information on my commands!",
+    aliases: ['helpme', 'h'],
+    cooldown: 60,
     execute(client, message, args, Discord, db){
 
+      if (!args[0]) {
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
               .setTitle("Commands: ")
@@ -20,5 +24,46 @@ module.exports = {
                 setTimeout(() => msg.delete(), 60000)
               })
               message.delete();
+              } else {
+                let commandfile = require(`./${args[0]}`)
+
+                if (!commandfile) {
+                  return;
+                }
+                let usage = commandfile.usage
+
+                if (usage) {
+
+
+                let name = commandfile.name
+                let description = commandfile.description
+                let aliases = commandfile.aliases.toString()
+                if (!aliases) aliases = "No other aliases present"
+                let cooldown = commandfile.cooldown
+                if (!cooldown) cooldown = 3;
+
+                if (!description) description = "No description present, you may have found a secret command ;)"
+
+                const embed = new Discord.MessageEmbed()
+            .setColor("WHITE")
+              .setTitle("Commands: ")
+              .setAuthor("Help!")
+              .addFields(
+                { name: '\u200b', value: `**Command name:** ${name}`},
+                { name: '\u200b', value: `**Command usage:** ${usage}`},
+                { name: '\u200b', value: `**Command aliases:** ${aliases}`},
+                { name: '\u200b', value: `**Command description:** ${description}`},
+                { name: '\u200b', value: `**Command cooldown:** ${cooldown}`},
+                
+              )
+            message.channel.send(embed)
+            .then(msg => {
+                setTimeout(() => msg.delete(), 60000)
+              })
+              message.delete();
+                } else {
+                  return;
+                }
+              }
               }
     }

@@ -4,7 +4,10 @@ let dayjs = require('dayjs');
 
 module.exports = {
     name: 'automod',
-    description: "automod config",
+    usage: 'automod',
+    description: "This command shows you the automod help page!",
+    aliases: ['amoderator', 'amod', 'automoderator'],
+    cooldown: 5,
     execute(client, message, args, Discord, db) {
         if (message.member.hasPermission('ADMINISTRATOR')) {
 

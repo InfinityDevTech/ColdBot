@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'vote',
-    description: "Shows vote",
+    usage: 'vote',
+    description: "Shows my vote page to support me!",
+    aliases: ['votebot', 'vpage'],
+    cooldown: 10,
     execute(client, message, args, Discord, db){
         if (!message.guild) return;
         

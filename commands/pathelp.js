@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'pathelp',
-    description: "Shows Help",
+    usage: 'pathelp',
+    description: "Shows the help page, but for patrons...",
+    aliases: ['patronhelp', 'phelp'],
+    cooldown: 60,
     execute(client, message, args, Discord, db){
 
         let rank

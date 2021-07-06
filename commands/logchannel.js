@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'logchannel',
-    description: "changes log channel",
+    usage: 'logchannel <TAG-CHANNEL-HERE>',
+    description: "Changes the log channel for anything cold",
+    aliases: ['configlogs', 'botlogs'],
+    cooldown: 60,
     execute(client, message, args, Discord, db){
         let channelID = args[0];
         let categorychannel = message.guild.channels.cache.get(channelID);

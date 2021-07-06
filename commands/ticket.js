@@ -4,7 +4,9 @@ const randomstring = require("randomstring");
 
 module.exports = {
     name: 'ticket',
-    description: "creats",
+    usage: 'ticket',
+    description: "Creates a ticket!",
+    cooldown: 60,
     async execute(client, message, args, Discord, db){
 let str = message.author.tag;
 var tagnumbers = str.split('#')[1];

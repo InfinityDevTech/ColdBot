@@ -4,7 +4,10 @@ let dayjs = require('dayjs');
 
 module.exports = {
     name: 'dbk',
-    description: "Checks kick logs",
+    usage: 'dbk <BAN-ID>',
+    description: "This command checks the kick logs to help you get information on a kick!",
+    aliases: ['kickdatabase', 'kicklogs'],
+    cooldown: 20,
     execute(client, message, args, Discord, db) {
 
 if (!args[0]) {

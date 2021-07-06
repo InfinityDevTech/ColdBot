@@ -7,6 +7,8 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./firebase-login.json')
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+client.cooldowns = new Discord.Collection();
+
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)

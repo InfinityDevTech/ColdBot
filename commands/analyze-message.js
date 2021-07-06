@@ -3,7 +3,10 @@ const Perspective = require('perspective-api-client')
 
 module.exports = {
     name: 'analyze-message',
-    description: "analyzes a message using AI",
+    usage: 'analyze-message <MESSAGE-TO-ANALYZE>',
+    description: "The command analyzes a message using the power of Artificial-Intelligence",
+    aliases: ['message-analyze', 'messageanalyze', 'analyzemessage'],
+    cooldown: 60,
     async execute(client, message, args, Discord, db) {
 
         if (!message.guild) return;

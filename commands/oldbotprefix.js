@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'oldbotprefix',
-    description: "Shows Prefix",
+    usage: '[NO PREFIX] coldbotprefix',
+    description: "Shows the prefix for the bot",
+    cooldown: 60,
     execute(client, message, args, Discord, db){
         if (!message.guild) return;
 

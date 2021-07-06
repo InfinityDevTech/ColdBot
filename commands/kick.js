@@ -4,7 +4,9 @@ let dayjs = require('dayjs');
 
 module.exports = {
     name: 'kick',
+    usage: 'kick <USER>',
     description: "Kicks A User!",
+    cooldown: 5,
     async execute(client, message, args, Discord, db) {
 
         if (!message.guild) return;

@@ -5,7 +5,10 @@ const ticket = require("./ticket");
 
 module.exports = {
     name: 'ticketconfig',
-    description: "Csets the ticket category",
+    usage: 'ticketconfig <CATEGORY ID>',
+    description: "Sets the ticket category!",
+    aliases: ['configticket', 'tconfig'],
+    cooldown: 60,
     execute(client, message, args, Discord, db) {
 
         let channelID = args[0];

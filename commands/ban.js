@@ -4,7 +4,9 @@ let dayjs = require('dayjs');
 
 module.exports = {
     name: 'ban',
-    description: "bans a user",
+    usage: 'ban <USER>',
+    description: "Using this command you can ban a user!",
+    cooldown: 5,
     async execute(client, message, args, Discord, db) {
         const member = message.mentions.users.first();
 

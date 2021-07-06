@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'ticketcontrols',
-    description: "Does Ticket Controls",
+    usage: '',
+    description: "Does controls for the tickets!",
+    aliases: ['controltickets', 'tcontrols'],
+    cooldown: 20,
     async execute(client, message, args, Discord, db){
 
 message.delete();

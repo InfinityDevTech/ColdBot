@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'setprefix',
+    usage: 'setprefix <PREFIX>',
     description: "Sets the bot prefix!",
+    aliases: ['prf', 'prefixset'],
+    cooldown: 60,
     async execute(client, message, args, Discord, db) {
 
         if (message.member.hasPermission('ADMINISTRATOR')) {

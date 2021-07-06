@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: 'adminhelp',
-    description: "Shows Help but for admins :)",
+    usage: 'adminhelp',
+    description: "Shows the help for administrators!",
+    aliases: ['ahelp', 'helpadmin'],
+    cooldown: 60,
     execute(client, message, args, Discord, db){
 
         if (!message.guild) return;
