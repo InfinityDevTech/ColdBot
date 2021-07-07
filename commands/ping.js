@@ -11,8 +11,6 @@ module.exports = {
         message.channel.send('Calculating ping...').then(resultMessage => {
             const botping = resultMessage.createdTimestamp - message.createdTimestamp
 
-            resultMessage.delete()
-
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
             .setTitle("Bot info: ")
@@ -20,11 +18,13 @@ module.exports = {
                 { name: 'Bot ping', value: `The bots ping is \`${botping}\`ms, the API ping is \`${client.ws.ping}\`` },
 
             )
-        message.channel.edit(embed)
+        message.channel.send(embed)
             .then(msg => {
                 setTimeout(() => msg.delete(), 60000)
             })
         message.delete();
+        resultMessage.delete()
+        
 
         })
 
