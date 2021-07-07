@@ -91,17 +91,20 @@ module.exports = (client, Discord, db, message, member) => {
             })
 
             //calculates the command if its not toxic :)
+            if (!message.content.startsWith(prefix)) return;
             const args = message.content.slice(prefix.length).split(/ +/);
             const cmd = args.shift().toLowerCase();
 
             const command = client.commands.get(cmd)
+            || client.commands.find(cmd2 => cmd2.aliases && cmd2.aliases.includes(cmd));
+
+            if (!command) return;
             if (!cooldowns.has(command.name)) {
                 cooldowns.set(command.name, new Discord.Collection());
             }
 
             const now = Date.now();
             const timestamps = cooldowns.get(command.name)
-            || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
             const cooldownAmount = (command.cooldown || 3) * 1000;
 
             if (timestamps.has(message.author.id)) {
@@ -109,7 +112,10 @@ module.exports = (client, Discord, db, message, member) => {
 
                 if (now < expirationTime) {
                     const timeLeft = (expirationTime - now) / 1000;
-                    return message.reply(`please wait \`${timeLeft.toFixed(1)}\` more second(s) before reusing the \`${command.name}\` command.`);
+                    return message.reply(`please wait \`${timeLeft.toFixed(1)}\` more second(s) before reusing the \`${command.name}\` command.`)
+                    .then(msg => {
+                        setTimeout(() => msg.delete(), 15000)
+                      })
                 }
             }
             timestamps.set(message.author.id, now);
@@ -118,12 +124,9 @@ module.exports = (client, Discord, db, message, member) => {
 
             if (cmd === "oldbotprefix") oldbotprefix.execute(client, message, args, Discord, db);
 
-
-            if (!message.content.startsWith(prefix)) return;
-
             if (command) command.execute(client, message, args, Discord, db)
             } catch (error) {
-                message.channel.send("An error has occured ``` " + error + "```")
+                message.channel.send("A rare bug has appeared! ``` " + error + "```\n Please report the error here: (https://discord.gg/k4fb9TZfcK), thank you!")
             }
 
 

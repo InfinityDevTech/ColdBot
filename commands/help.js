@@ -16,6 +16,7 @@ module.exports = {
               .addFields(
                 { name: '📰 - General Commands', value: "`<NO PREFIX> - coldbotprefix`, `vote - shows the vote page`, `paypal - shows my paypal to support me!`"},
                 { name: '👔 - Administrative Help', value: "This command shows admins the help page: `adminhelp`"},
+                { name: '🤣 - Fun Commands', value: "`cat - shows a picture of a cute kitty`, `dog - shows a picture of a adorable dog`, `randomnumber <MINIMUM> <MAXIMUM> - makes a random number between your specifications`, `rolldice <NUMBER-OF-DICE> - rolls the number of dice you specify`"},
                 { name: '\u200b', value: '[Support Me!](https://www.paypal.com/paypalme/infinitydevtech) | [Vote for the bot!](https://top.gg/bot/855035553916518401/vote) | [Bot discord!](https://discord.gg/k4fb9TZfcK) | [Add the bot to servers!](https://discord.com/oauth2/authorize?client_id=855035553916518401&scope=bot&permissions=8)'},
                 
               )
@@ -53,7 +54,7 @@ module.exports = {
                 { name: '\u200b', value: `**Command usage:** ${usage}`},
                 { name: '\u200b', value: `**Command aliases:** ${aliases}`},
                 { name: '\u200b', value: `**Command description:** ${description}`},
-                { name: '\u200b', value: `**Command cooldown:** ${cooldown}`},
+                { name: '\u200b', value: `**Command cooldown:** ${cooldown} second(s)`},
                 
               )
             message.channel.send(embed)
