@@ -37,7 +37,9 @@ await gData.channels.cache
         'spamFilter' : 'true',
         'ticketParent' : '',
         'spamTolerance' : '80',
-        'logChannel' : 'undefined'
+        'logChannel' : 'undefined',
+        'patronSupporterID' : 'undefined',
+        'isSupported' : 'false'
     })
 })
 })

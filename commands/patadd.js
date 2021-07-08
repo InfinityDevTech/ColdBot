@@ -19,7 +19,14 @@ module.exports = {
                 const member2 = await message.guild.members.fetch({user: userId})
                 const dmChannel = await member2.createDM()
 
-                        dmChannel.send(`Hello! Your patron powers have been activated with the tier of ${rank}, use ;pathelp (Not in DM's of course :) ) to learn your commands!`)
+                const embed = new Discord.MessageEmbed()
+                .setColor("WHITE")
+                  .setTitle("Patronage added!")
+                  .addFields(
+                    { name: '\u200b', value: `Hello! Your powers of patronage have been activated! Your patronage tier is \`${rank}\`, use \`pathelp\` to see your available commands!`},
+                    
+                  )
+                dmChannel.send(embed)
 
                 let dateobj = new Date();
 
@@ -31,11 +38,22 @@ module.exports = {
 
                 let time = `${dateobj.getHours()}:${dateobj.getMinutes()}:${dateobj.getSeconds()}`;
 
+                let serversCanSupport;
+
+                if (rank === '3') {
+                serversCanSupport = '3'
+                } else if (rank === '2') {
+                    serversCanSupport = '2'
+                } else if (rank === '1') {
+                    serversCanSupport = '1'
+                }
+
                 db.collection('patrons').doc(member).set({
                     'patronID': member,
                     'date': date,
                     'time': time,
-                    'rank': rank
+                    'rank': rank,
+                    'serversCanSupport' : serversCanSupport
                 })
                 message.delete();
             } else { return; }

@@ -20,7 +20,7 @@ module.exports = {
             )
         message.channel.send(embed)
             .then(msg => {
-                setTimeout(() => msg.delete(), 60000)
+                setTimeout(() => msg.delete(), 20000)
             })
         message.delete();
         resultMessage.delete()

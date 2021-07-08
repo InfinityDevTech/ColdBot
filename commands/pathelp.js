@@ -18,13 +18,34 @@ module.exports = {
         }).then(() => {
 
            if (rank === '1') {
-            message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
+            const embed = new Discord.MessageEmbed()
+            .setColor("WHITE")
+              .setTitle("Patron commands: ")
+              .addFields(
+                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                
+              )
+            dmChannel.send(embed)
            } else if (rank === '2') {
-            message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
+            const embed = new Discord.MessageEmbed()
+            .setColor("WHITE")
+              .setTitle("Patron commands: ")
+              .addFields(
+                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                
+              )
+            dmChannel.send(embed)
            } else if (rank === '3') {
-               message.author.send("Hello! Patron help is coming soon, if you found my patreon early, good for you!")
+            const embed = new Discord.MessageEmbed()
+            .setColor("WHITE")
+              .setTitle("Patron commands: ")
+              .addFields(
+                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                
+              )
+            dmChannel.send(embed)
            }
-
+          message.delete()
         })
     }
 }
