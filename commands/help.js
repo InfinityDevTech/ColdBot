@@ -5,7 +5,7 @@ module.exports = {
     usage: 'help',
     description: "Shows the help page to get information on my commands!",
     aliases: ['helpme', 'h'],
-    cooldown: 60,
+    cooldown: 20,
     execute(client, message, args, Discord, db){
 
       if (!args[0]) {

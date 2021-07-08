@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    name: 'supportserver',
-    usage: 'supportserver',
-    description: "Allows you to support a server using your patreon powers!",
-    aliases: ['serverpremium', 'serversupport', 'premiumserver'],
+    name: 'removesupport',
+    usage: 'removesupport',
+    description: "Removes support from a server and gives you another support token!",
+    aliases: ['removepremiumserver', 'un-support'],
     cooldown: 5,
     async execute(client, message, args, Discord, db) {
         if (!message.guild) return;
@@ -17,16 +17,18 @@ module.exports = {
             }
 
         }).then(async () => {
-            let supportstatus;
-            db.collection('guilds').doc(message.guild.id).get().then((yourmom) => {
-                if (yourmom.exists) {
-                    supportstatus = yourmom.data().isSupported;
+            let supporterID;
+            let isSupported;
+            db.collection('guilds').doc(message.guild.id).get().then((j) => {
+                if (j.exists) {
+                    supporterID = j.data().supporterID;
+                    isSupported = j.data().isSupported;
                 }
     
             }).then(async () => {
+
             try {
-                let guildtosupport = message.guild.id
-              
+
                 if (!rank) {
                     const embed = new Discord.MessageEmbed()
                         .setColor("WHITE")
@@ -38,35 +40,36 @@ module.exports = {
                     message.author.send(embed)
                     return
                 }
-                if (serversCanSupport === '0') {
+                if (!isSupported) {
                     const embed = new Discord.MessageEmbed()
-                    .setColor("WHITE")
-                    .setTitle("Error!")
-                    .addFields(
-                        { name: '\u200b', value: `You do not have enough support tokens left! You must un-support a server or get a higher tier! You can get a better tier here \`https://www.patreon.com/InfinityDevTech\`` },
+                        .setColor("WHITE")
+                        .setTitle("Error!")
+                        .addFields(
+                            { name: '\u200b', value: `Error! This server is not supported, you cannot retract support to this server if it is already supported!` },
 
-                    )
-                message.author.send(embed)
-                return
+                        )
+                    message.author.send(embed)
+                    return
                 }
-                if (supportstatus === 'true') {
+                if (!supporterID === message.author.id) {
                     const embed = new Discord.MessageEmbed()
-                    .setColor("WHITE")
-                    .setTitle("Error!")
-                    .addFields(
-                        { name: '\u200b', value: `This server is already supported! You cannot support a server that is already supported!` },
+                        .setColor("WHITE")
+                        .setTitle("Error!")
+                        .addFields(
+                            { name: '\u200b', value: `Error! You are not the supporter! So you cant retract support if your not supporting the server!` },
 
-                    )
-                message.author.send(embed)
-                return
+                        )
+                    message.author.send(embed)
+                    return
                 }
-                let newservercount = serversCanSupport--
+               
+                let newservercount = serversCanSupport++
                 db.collection('patrons').doc(mesage.author.id).set({
                     'serversCanSupport' : newservercount
                 })
                 db.collection('guilds').doc(message.guild.id).set({
-                    'isSupported' : 'true',
-                    'patronSupporterID' : message.author.id
+                    'isSupported' : 'false',
+                    'patronSupporterID' : 'undefined'
                 })
                 
 
@@ -74,7 +77,7 @@ module.exports = {
             } catch (err) {
                 message.author.send(`\`${err}\``)
             }
-        })
+            })
         })
     }
 

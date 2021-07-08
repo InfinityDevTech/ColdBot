@@ -22,7 +22,7 @@ module.exports = {
             .setColor("WHITE")
               .setTitle("Patron commands: ")
               .addFields(
-                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                { name: '\u200b', value: "`supportserver - Gives a server permium features`, `removesupport - Removes premium features from a server`"},
                 
               )
             message.author.send(embed)
@@ -31,7 +31,7 @@ module.exports = {
             .setColor("WHITE")
               .setTitle("Patron commands: ")
               .addFields(
-                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                { name: '\u200b', value: "`supportserver - Gives a server permium features`, `removesupport - Removes premium features from a server`"},
                 
               )
               message.author.send(embed)
@@ -40,7 +40,7 @@ module.exports = {
             .setColor("WHITE")
               .setTitle("Patron commands: ")
               .addFields(
-                { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
+                { name: '\u200b', value:"`supportserver - Gives a server permium features`, `removesupport - Removes premium features from a server`"},
                 
               )
               message.author.send(embed)
