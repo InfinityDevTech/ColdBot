@@ -26,7 +26,10 @@ module.exports = {
               })
               message.delete();
               } else {
-                let commandfile = require(`./${args[0]}`)
+                const cmd = args.shift().toLowerCase();
+                const commandfile = client.commands.get(cmd)
+            || client.commands.find(cmd2 => cmd2.aliases && cmd2.aliases.includes(cmd));
+
 
                 if (!commandfile) {
                   return;

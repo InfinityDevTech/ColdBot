@@ -41,7 +41,7 @@ module.exports = {
                 return
                 }
                 let newservercount = serversCanSupport--
-                db.collection('patrons').doc(message.author.id).set({
+                db.collection('guilds').doc(message.guild.id).set({
                     'serversCanSupport' : newservercount,
                     'isSupported' : 'true'
                 })
