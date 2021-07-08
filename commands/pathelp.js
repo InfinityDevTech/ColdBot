@@ -25,7 +25,7 @@ module.exports = {
                 { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
                 
               )
-            dmChannel.send(embed)
+            message.author.send(embed)
            } else if (rank === '2') {
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
@@ -34,7 +34,7 @@ module.exports = {
                 { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
                 
               )
-            dmChannel.send(embed)
+              message.author.send(embed)
            } else if (rank === '3') {
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
@@ -43,7 +43,7 @@ module.exports = {
                 { name: '\u200b', value: `Patreon is coming soon, so if you found this early, you were most likely added to it by the owner!`},
                 
               )
-            dmChannel.send(embed)
+              message.author.send(embed)
            }
           message.delete()
         })
