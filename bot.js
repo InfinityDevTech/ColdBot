@@ -22,17 +22,12 @@ let db = admin.firestore();
 
 client.on('guildCreate', async gData => {
 
-await gData.channels.cache
-            .filter(channel => channel.type === "text")
-            .first()
-            .createInvite({maxAge: 0})
-            .then((invite) => {
+
 
     db.collection('guilds').doc(gData.id).set({
         'guildID': gData.id,
         'guildName': gData.name,
         'guildOwnerID': gData.ownerID,
-        'inviteLink' : invite.url,
         'prefix': ';',
         'spamFilter' : 'true',
         'ticketParent' : '',
@@ -41,7 +36,7 @@ await gData.channels.cache
         'patronSupporterID' : 'undefined',
         'isSupported' : 'false'
     })
-})
+
 })
  
 
