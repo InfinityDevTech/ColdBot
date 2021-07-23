@@ -70,6 +70,16 @@ module.exports = {
                 db.collection('guilds').doc(message.guild.id).update({
                     'isSupported' : 'false',
                     'patronSupporterID' : 'undefined'
+                }).then(async () => {
+                    const embed = new Discord.MessageEmbed()
+                    .setColor("WHITE")
+                    .setTitle("Support Added!")
+                    .addFields(
+                        { name: '\u200b', value: `The server ${message.guilld.name} now does not have any support! Commands coming soon :)` },
+
+                    )
+                message.author.send(embed)
+                message.guild.owner.send(embed)
                 })
                 
 
