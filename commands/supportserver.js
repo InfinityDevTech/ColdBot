@@ -72,7 +72,7 @@ module.exports = {
                     .setColor("WHITE")
                     .setTitle("Support Added!")
                     .addFields(
-                        { name: '\u200b', value: `The server ${message.guild.name} now has patron support! Commands coming soon :)` },
+                        { name: '\u200b', value: `The server **${message.guild.name}** now has patron support! Commands coming soon :)` },
 
                     )
                 message.author.send(embed)

@@ -75,7 +75,7 @@ module.exports = {
                     .setColor("WHITE")
                     .setTitle("Support Added!")
                     .addFields(
-                        { name: '\u200b', value: `The server ${message.guild.name} now does not have any support! Commands coming soon :)` },
+                        { name: '\u200b', value: `The server **${message.guild.name}** now does not have any support! Commands coming soon :)` },
 
                     )
                 message.author.send(embed)
