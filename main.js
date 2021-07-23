@@ -1,12 +1,12 @@
 const { ShardingManager } = require('discord.js');
 const manager = new ShardingManager('./bot.js', { token: 'ODU1MDM1NTUzOTE2NTE4NDAx.YMsn6Q.1G3CEMbbQTkeEBRxv6EFoUsYxEg' });
-const AutoPoster = require('topgg-autoposter')
+const { AutoPoster } = require('topgg-autoposter')
+require('dotenv').config()
 
 const poster = AutoPoster(process.env.TOPGG_TOKEN, manager)
 
-poster.on('posted', (pdata) => {
-    console.log(pdata)
-    console.log(`Posted stats with: `)
+poster.on('posted', async (pdata) => {
+    console.log(`Posted stats with data: SERVER-COUNT "${pdata.serverCount}" | SHARD-COUNT "${pdata.shardCount}"`)
 })
 
 
