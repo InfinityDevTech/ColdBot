@@ -56,6 +56,7 @@ module.exports = (client, Discord, db, message, member) => {
             }).then(async () => {
                 if (toggle === 'true') {
 
+                try {
                     const perspective = new Perspective({ apiKey: process.env.API_KEY })
                     const toxic = await perspective.analyze(message.content);
                     let obj = JSON.parse(JSON.stringify(toxic))
@@ -78,6 +79,13 @@ module.exports = (client, Discord, db, message, member) => {
                         let m2 = message;
                         message.delete();
 
+                   
+
+                    }
+                }catch(err){
+                    return
+                }
+
                         if (!logchannel === 'undefined') {
                             //logging for deletion
                             const embed2 = new Discord.MessageEmbed()
@@ -90,8 +98,7 @@ module.exports = (client, Discord, db, message, member) => {
                             client.channels.cache.get(logchannel).send(embed2)
                         }
                     }
-                }
-            })
+                })
 
             //calculates the command if its not toxic :)
             if (!message.content.startsWith(prefix)) return;
