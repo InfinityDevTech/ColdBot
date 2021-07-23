@@ -59,14 +59,14 @@ module.exports = (client, Discord, db, message, member) => {
                     let obj = JSON.parse(JSON.stringify(toxic))
 
 
-                    if (Math.ceil(obj.attributeScores.TOXICITY.summaryScore.value * 100) > spamTolerance) {
+                    if (Math.floor(obj.attributeScores.TOXICITY.summaryScore.value * 100) > spamTolerance) {
 
                         //toxicity deletion
                         const embed = new Discord.MessageEmbed()
                             .setColor("WHITE")
                             .setTitle("Message Deletion: ")
                             .addFields(
-                                { name: '\u200b', value: `Your message **"${message.content}"**, has been deleted from the server **"${message.guild.name}"** because of the toxicity percentage (${Math.ceil(obj.attributeScores.TOXICITY.summaryScore.value * 100)}%)` },
+                                { name: '\u200b', value: `Your message **"${message.content}"**, has been deleted from the server **"${message.guild.name}"** because of the toxicity percentage (${Math.floor(obj.attributeScores.TOXICITY.summaryScore.value * 100)}%)` },
 
                             )
                         message.author.send(embed)
@@ -89,7 +89,7 @@ module.exports = (client, Discord, db, message, member) => {
                                 .setColor("WHITE")
                                 .setTitle("Message Deletion: ")
                                 .addFields(
-                                    { name: '\u200b', value: `The message **"${m2.content}"**, has been deleted because of the toxicity percentage (${Math.ceil(obj.attributeScores.TOXICITY.summaryScore.value * 100)}%) the message was written by **${m2.author.tag}**` },
+                                    { name: '\u200b', value: `The message **"${m2.content}"**, has been deleted because of the toxicity percentage (${Math.floor(obj.attributeScores.TOXICITY.summaryScore.value * 100)}%) the message was written by **${m2.author.tag}**` },
 
                                 )
                             client.channels.cache.get(logchannel).send(embed2)
