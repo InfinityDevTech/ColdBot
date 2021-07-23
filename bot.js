@@ -22,8 +22,6 @@ let db = admin.firestore();
 
 client.on('guildCreate', async gData => {
 
-
-
     db.collection('guilds').doc(gData.id).set({
         'guildID': gData.id,
         'guildName': gData.name,
