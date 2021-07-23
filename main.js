@@ -10,6 +10,6 @@ poster.on('posted', async (pdata) => {
 })
 
 
-manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id + 1}`));
-manager.on('shardDeath', shard => console.log(`${shard.id + 1} has died!`))
+manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`));
+manager.on('shardDeath', shard => console.log(`${shard.id} has died!`))
 manager.spawn();

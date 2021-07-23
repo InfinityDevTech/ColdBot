@@ -38,6 +38,9 @@ module.exports = (client, Discord, db, message, member) => {
         db.collection('guilds').doc(message.guild.id).get().then((q) => {
             if (q.exists) {
                 prefix = q.data().prefix;
+            } else {
+                message.channel.send("You can only send commands in a server with the bot invited!")
+                return
             }
         }).then(async () => {
             let toggle;
