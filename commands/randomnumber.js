@@ -28,12 +28,12 @@ if (isNaN(min) || isNaN(max)){
       })
       return
 }
-        if (max < min) {
+        if (min > min) {
             const embed = new Discord.MessageEmbed()
             .setColor("WHITE")
               .setTitle("Error!")
               .addFields(
-                { name: '\u200b', value: `The maximum cannot be bigger than the minimum number`},
+                { name: '\u200b', value: `The minimum cannot be bigger than the maximum number`},
                 
               )
             message.channel.send(embed)
